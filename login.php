@@ -56,7 +56,7 @@
 
                
 
-                <button type="submit" class="btn-primary">Registracija</button>
+                <button type="submit" class="btn-primary"><a href="Homepage.php">Registracija</a></button>
             </form>
         </div>
     </div>
