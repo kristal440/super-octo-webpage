@@ -24,7 +24,7 @@
                 <button class="tab" data-tab="register">Registracija</button>
             </div>
 
-            <form id="login-form" class="form active">
+            <form id="login-form" class="form active" action="Homepage.php">
                 <div class="input-group">
                     <label for="email">E-pošta</label>
                     <input type="email" id="email" name="email" required />
@@ -35,10 +35,10 @@
                     <input type="password" id="password" name="password" required />
                 </div>
 
-                <button type="submit" class="btn-primary"><a class="text"href="Homepage.php">Prijava</a></button>
+                <button type="submit" class="btn-primary">Prijava</button>
             </form>
 
-            <form id="register-form" class="form">
+            <form id="register-form" class="form" action="login.php">
                 <div class="input-group">
                     <label for="name">Ime in priimek</label>
                     <input type="text" id="name" name="name" required />
@@ -56,7 +56,7 @@
 
                
 
-                <button type="submit" class="btn-primary"><a class="text"href="login.php">Registracija</a></button>
+                <button type="submit" class="btn-primary">Registracija</button>
             </form>
         </div>
     </div>
