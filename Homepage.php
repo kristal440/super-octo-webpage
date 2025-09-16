@@ -11,7 +11,7 @@
     <div class="logo"><a href="Homepage.html"class="reload">🎓 Šolski sistem na daljavo</a></div>
     <div class="user-info">
         <span>👤 Ziga Gracner (Učenec)</span>
-        <button onclick="window.location.href='logout.php'">Odjava</button>
+        <button onclick="window.location.href='login.php'">Odjava</button>
     </div>
 </header>
 
@@ -22,7 +22,7 @@
     <div class="stats">
         <div class="stat-card">
             <h3>Moji predmeti</h3>
-            <p><strong><?php echo count($subjects); ?></strong></p>
+            <p><strong></strong></p>
             <i class="icon-book"></i>
         </div>
         <div class="stat-card">

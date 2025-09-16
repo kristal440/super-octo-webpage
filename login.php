@@ -35,7 +35,7 @@
                     <input type="password" id="password" name="password" required />
                 </div>
 
-                <button type="submit" class="btn-primary">Prijava</button>
+                <button type="submit" class="btn-primary"><a class="text"href="Homepage.php">Prijava</a></button>
             </form>
 
             <form id="register-form" class="form">
@@ -56,7 +56,7 @@
 
                
 
-                <button type="submit" class="btn-primary"><a href="Homepage.php">Registracija</a></button>
+                <button type="submit" class="btn-primary"><a class="text"href="login.php">Registracija</a></button>
             </form>
         </div>
     </div>

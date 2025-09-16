@@ -577,3 +577,6 @@ body {
 .dashboard-page .subject-item a:hover {
     text-decoration: underline;
 }
+a.text{
+    text-decoration: none;
+}
