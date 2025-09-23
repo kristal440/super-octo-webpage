@@ -1,0 +1,579 @@
+/* Osnovne nastavitve */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f7fa;
+    color: #333;
+    line-height: 1.6;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background: white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.user-info span {
+    font-size: 0.95rem;
+    color: #555;
+}
+
+button {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+button.primary {
+    background-color: #3498db;
+    color: white;
+}
+
+button.secondary {
+    background-color: #e0e0e0;
+    color: #333;
+}
+
+/* Glavni del strani */
+main {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+h1 {
+    text-align: center;
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    color: #2c3e50;
+}
+
+p {
+    text-align: center;
+    color: #7f8c8d;
+    margin-bottom: 2rem;
+}
+
+/* Statistika - karte */
+.stats {
+    display: flex;
+    justify-content: space-between;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.stat-card {
+    flex: 1;
+    min-width: 250px;
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    transition: transform 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+}
+
+.stat-card h3 {
+    font-size: 0.9rem;
+    color: #7f8c8d;
+}
+
+.stat-card p {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.stat-card i {
+    font-size: 2rem;
+    margin-top: 0.5rem;
+    color: #3498db;
+}
+
+/* Iconi (lahko uporabiš Font Awesome ali ikone) */
+.icon-book { content: "📚"; }
+.icon-file { content: "📄"; }
+.icon-upload { content: "📤"; }
+.icon-book-large { content: "📖"; }
+
+/* Srednji del: Moji predmeti */
+.content {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    margin-bottom: 1rem;
+}
+
+.content h2 {
+    margin-bottom: 1rem;
+    color: #2c3e50;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 3rem 0;
+    color: #7f8c8d;
+}
+
+.empty-state i {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    color: #bdc3c7;
+}
+
+.empty-state h3 {
+    margin-bottom: 0.5rem;
+    color: #34495e;
+}
+
+.empty-state p {
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+}
+
+.btn-primary {
+    background-color: #3498db;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #2980b9;
+}
+
+/* Seznam predmetov */
+.subject-list {
+    list-style: none;
+    margin-top: 1rem;
+}
+
+.subject-item {
+    border-bottom: 1px solid #eee;
+    padding: 1rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.subject-item:last-child {
+    border-bottom: none;
+}
+
+.subject-item h3 {
+    font-size: 1.1rem;
+    color: #2c3e50;
+}
+
+.subject-item p {
+    font-size: 0.95rem;
+    color: #7f8c8d;
+}
+
+.subject-item a {
+    color: #3498db;
+    text-decoration: none;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+    display: inline-block;
+}
+
+.subject-item a:hover {
+    text-decoration: underline;
+}
+.reload{
+    text-decoration: none;
+}
+
+/* ===== OSNOVNI RESET ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* ===== LOGIN PAGE STYLES ===== */
+.login-page {
+    background-color: #f5f7fa;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-page .container {
+    width: 100%;
+    max-width: 400px;
+    padding: 1rem;
+}
+
+.login-page .card {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    padding: 2rem;
+    text-align: center;
+    border: 1px solid #eee;
+}
+
+.login-page .logo {
+    width: 60px;
+    height: 60px;
+    background: #e3f2fd;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 1.5rem;
+    font-size: 2rem;
+    color: #2196f3;
+}
+
+.login-page .logo i {
+    font-size: 1.5rem;
+}
+
+.login-page h2 {
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    color: #2c3e50;
+}
+
+.login-page .tabs {
+    display: flex;
+    gap: 0;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+}
+
+.login-page .tab {
+    flex: 1;
+    padding: 0.75rem;
+    background: #e0e0e0;
+    border: none;
+    cursor: pointer;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    color: #555;
+}
+
+.login-page .tab.active {
+    background: white;
+    color: #2c3e50;
+    font-weight: 600;
+}
+
+.login-page .form {
+    display: none;
+}
+
+.login-page .form.active {
+    display: block;
+}
+
+.login-page .input-group {
+    margin-bottom: 1.2rem;
+    text-align: left;
+}
+
+.login-page .input-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.login-page .input-group input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    background: #f9f9f9;
+    transition: border 0.3s ease;
+}
+
+.login-page .input-group input:focus {
+    outline: none;
+    border-color: #3498db;
+    background: white;
+}
+
+.login-page .btn-primary {
+    width: 100%;
+    padding: 0.8rem;
+    background-color: #1a1a1a;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.login-page .btn-primary:hover {
+    background-color: #000;
+}
+
+/* ===== DASHBOARD PAGE STYLES ===== */
+.dashboard-page {
+    background-color: #f5f7fa;
+}
+
+.dashboard-page header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background: white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.dashboard-page .logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.dashboard-page .user-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.dashboard-page .user-info span {
+    font-size: 0.95rem;
+    color: #555;
+}
+
+.dashboard-page button {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    transition: background 0.3s ease;
+}
+
+.dashboard-page button:hover {
+    opacity: 0.9;
+}
+
+.dashboard-page button.primary {
+    background-color: #3498db;
+    color: white;
+}
+
+.dashboard-page button.secondary {
+    background-color: #e0e0e0;
+    color: #333;
+}
+
+.dashboard-page main {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.dashboard-page h1 {
+    text-align: center;
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    color: #2c3e50;
+}
+
+.dashboard-page p {
+    text-align: center;
+    color: #7f8c8d;
+    margin-bottom: 2rem;
+}
+
+.dashboard-page .stats {
+    display: flex;
+    justify-content: space-between;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.dashboard-page .stat-card {
+    flex: 1;
+    min-width: 250px;
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    transition: transform 0.3s ease;
+}
+
+.dashboard-page .stat-card:hover {
+    transform: translateY(-5px);
+}
+
+.dashboard-page .stat-card h3 {
+    font-size: 0.9rem;
+    color: #7f8c8d;
+}
+
+.dashboard-page .stat-card p {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.dashboard-page .stat-card i {
+    font-size: 2rem;
+    margin-top: 0.5rem;
+    color: #3498db;
+}
+
+.dashboard-page .content {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    margin-bottom: 1rem;
+}
+
+.dashboard-page .content h2 {
+    margin-bottom: 1rem;
+    color: #2c3e50;
+}
+
+.dashboard-page .empty-state {
+    text-align: center;
+    padding: 3rem 0;
+    color: #7f8c8d;
+}
+
+.dashboard-page .empty-state i {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    color: #bdc3c7;
+}
+
+.dashboard-page .empty-state h3 {
+    margin-bottom: 0.5rem;
+    color: #34495e;
+}
+
+.dashboard-page .empty-state p {
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+}
+
+.dashboard-page .btn-primary {
+    background-color: #3498db;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.dashboard-page .btn-primary:hover {
+    background-color: #2980b9;
+}
+
+.dashboard-page .subject-list {
+    list-style: none;
+    margin-top: 1rem;
+}
+
+.dashboard-page .subject-item {
+    border-bottom: 1px solid #eee;
+    padding: 1rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.dashboard-page .subject-item:last-child {
+    border-bottom: none;
+}
+
+.dashboard-page .subject-item h3 {
+    font-size: 1.1rem;
+    color: #2c3e50;
+}
+
+.dashboard-page .subject-item p {
+    font-size: 0.95rem;
+    color: #7f8c8d;
+}
+
+.dashboard-page .subject-item a {
+    color: #3498db;
+    text-decoration: none;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+    display: inline-block;
+}
+
+.dashboard-page .subject-item a:hover {
+    text-decoration: underline;
+}
