@@ -1,1 +1,60 @@
+-- USERS TABLE
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    status ENUM('Student', 'Teacher', 'Admin') NOT NULL
+);
 
+-- SUBJECTS TABLE
+CREATE TABLE subjects (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    description TEXT,
+    teacher_id INT,
+    access_key CHAR(6),
+    FOREIGN KEY (teacher_id) REFERENCES users(id) ON DELETE SET NULL
+);
+
+-- USER-SUBJECTS (ENROLLMENTS) TABLE
+CREATE TABLE user_subjects (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    subject_id INT NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+    FOREIGN KEY (subject_id) REFERENCES subjects(id) ON DELETE CASCADE
+);
+
+-- MATERIALS TABLE (for uploaded files/resources)
+CREATE TABLE materials (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    subject_id INT NOT NULL,
+    title VARCHAR(255) NOT NULL,
+    file_path VARCHAR(255) NOT NULL,
+    uploaded_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (subject_id) REFERENCES subjects(id) ON DELETE CASCADE
+);
+
+-- ASSIGNMENTS TABLE (for homework/tasks)
+CREATE TABLE assignments (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    subject_id INT NOT NULL,
+    title VARCHAR(255) NOT NULL,
+    description TEXT,
+    due_date DATE,
+    FOREIGN KEY (subject_id) REFERENCES subjects(id) ON DELETE CASCADE
+);
+
+-- SUBMISSIONS TABLE (for students' submitted assignments)
+CREATE TABLE submissions (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    assignment_id INT NOT NULL,
+    user_id INT NOT NULL,
+    file_path VARCHAR(255) NOT NULL,
+    submitted_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    grade VARCHAR(10),
+    feedback TEXT,
+    FOREIGN KEY (assignment_id) REFERENCES assignments(id) ON DELETE CASCADE,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);
