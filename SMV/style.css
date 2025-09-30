@@ -315,9 +315,7 @@ body {
     font-weight: 600;
 }
 
-.login-page .form {
-    display: none;
-}
+
 
 .login-page .form.active {
     display: block;
