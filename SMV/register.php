@@ -1,5 +1,11 @@
 <!DOCTYPE html>
 <html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Šolski sistem na daljavo</title>
+        <link rel="stylesheet" href="style.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    </head>
     <body>
         <div class="login-page">
 
@@ -10,7 +16,7 @@
             </div>
 
             <h2>Šolski sistem na daljavo</h2>
-            
+
             <form id="register-form" class="form" action="login.php">
                 <div class="input-group">
                     <label for="name">Ime in priimek</label>
