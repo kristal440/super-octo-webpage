@@ -9,15 +9,15 @@
     <body>
         <div class="login-page">
 
-    <div class="container">
-        <div class="card">
-            <div class="logo">
+        <div class="container">
+            <div class="card">
+                <div class="logo">
                 <i class="fas fa-graduation-cap"></i>
-            </div>
+                </div>
 
-            <h2>Šolski sistem na daljavo</h2>
+                <h2>Šolski sistem na daljavo</h2>
 
-            <form id="register-form" class="form" action="login.php">
+                <form id="register-form" class="form" action="login.php">
                 <div class="input-group">
                     <label for="name">Ime in priimek</label>
                     <input type="text" id="name" name="name" required />
@@ -36,6 +36,9 @@
                
 
                 <button type="submit" class="btn-primary">Registracija</button>
-            </form>
+                </form>
+            </div>
+        </div>
+        </div>
     </body>
 </html>
