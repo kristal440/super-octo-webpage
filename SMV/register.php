@@ -57,17 +57,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 <form id="register-form" class="form" action="login.php">
                 <div class="input-group">
-                    <label for="name">Ime in priimek</label>
+                    <label for="ime">Ime in priimek</label>
                     <input type="text" id="name" name="name" required />
                 </div>
 
                 <div class="input-group">
-                    <label for="reg-email">E-pošta</label>
+                    <label for="email">E-pošta</label>
                     <input type="email" id="reg-email" name="email" required />
                 </div>
 
                 <div class="input-group">
-                    <label for="reg-password">Geslo</label>
+                    <label for="password">Geslo</label>
                     <input type="password" id="reg-password" name="password" required />
                 </div>
 
