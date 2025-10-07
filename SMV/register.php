@@ -5,7 +5,7 @@ session_start();
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    include 'db.php';
+    include 'database.php';
 
     $ime = $_POST['ime'];
     $email = $_POST['email'];
