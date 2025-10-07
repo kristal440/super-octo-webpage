@@ -7,7 +7,7 @@ session_start();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     include 'database.php';
 
-    $ime = $_POST['ime'];
+    $name = $_POST['ime'];
     $email = $_POST['email'];
     $password = password_hash($_POST['password'], PASSWORD_DEFAULT); 
 
