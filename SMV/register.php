@@ -55,7 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 <h2>Šolski sistem na daljavo</h2>
 
-                <form id="register-form" class="form" action="register.php" method="POST">
+                <form id="register-form" class="form" action="login.php" method="POST">
                 <div class="input-group">
                     <label for="ime">Ime in priimek</label>
                     <input type="text" id="name" name="name" required />
