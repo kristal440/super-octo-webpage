@@ -7,7 +7,7 @@ session_start();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     include 'database.php';
 
-    $name = $_POST['ime'];
+    $name = $_POST['name'];
     $email = $_POST['email'];
     $password = password_hash($_POST['password'], PASSWORD_DEFAULT); 
 
@@ -21,8 +21,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($result_check->num_rows > 0) {
         $error = "Ta e-poštni naslov je že uporabljen.";
     } else {
-        
-        $sql_insert = "INSERT INTO uporabniki (ime, email, geslo) VALUES (?, ?, ?)";
+
+        $sql_insert = "INSERT INTO users (name, email, password) VALUES (?, ?, ?)";
         $stmt_insert = $conn->prepare($sql_insert);
         $stmt_insert->bind_param("sss", $name, $email, $password);
         $stmt_insert->execute();
@@ -55,7 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 <h2>Šolski sistem na daljavo</h2>
 
-                <form id="register-form" class="form" action="login.php">
+                <form id="register-form" class="form" action="register.php" method="POST">
                 <div class="input-group">
                     <label for="ime">Ime in priimek</label>
                     <input type="text" id="name" name="name" required />
