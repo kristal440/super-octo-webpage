@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         
         $sql_insert = "INSERT INTO uporabniki (ime, email, geslo) VALUES (?, ?, ?)";
         $stmt_insert = $conn->prepare($sql_insert);
-        $stmt_insert->bind_param("sss", $ime, $email, $password);
+        $stmt_insert->bind_param("sss", $name, $email, $password);
         $stmt_insert->execute();
 
         
