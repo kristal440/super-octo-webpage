@@ -12,7 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = password_hash($_POST['password'], PASSWORD_DEFAULT); 
 
     
-    $sql_check = "SELECT * FROM uporabniki WHERE email = ?";
+    $sql_check = "SELECT * FROM users WHERE email = ?";
     $stmt_check = $conn->prepare($sql_check);
     $stmt_check->bind_param("s", $email);
     $stmt_check->execute();
