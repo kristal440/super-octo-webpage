@@ -1,3 +1,41 @@
+<?php
+
+
+session_start();
+
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    include 'db.php';
+
+    $ime = $_POST['ime'];
+    $email = $_POST['email'];
+    $password = password_hash($_POST['password'], PASSWORD_DEFAULT); 
+
+    
+    $sql_check = "SELECT * FROM uporabniki WHERE email = ?";
+    $stmt_check = $conn->prepare($sql_check);
+    $stmt_check->bind_param("s", $email);
+    $stmt_check->execute();
+    $result_check = $stmt_check->get_result();
+
+    if ($result_check->num_rows > 0) {
+        $error = "Ta e-poštni naslov je že uporabljen.";
+    } else {
+        
+        $sql_insert = "INSERT INTO uporabniki (ime, email, geslo) VALUES (?, ?, ?)";
+        $stmt_insert = $conn->prepare($sql_insert);
+        $stmt_insert->bind_param("sss", $ime, $email, $password);
+        $stmt_insert->execute();
+
+        
+        header("Location: login.php");
+        exit();
+    }
+}
+?>
+
+
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -37,6 +75,7 @@
 
                 <button type="submit" class="btn-primary">Registracija</button>
                 </form>
+                <a href="login.php">LOGIN</a>
             </div>
         </div>
         </div>
