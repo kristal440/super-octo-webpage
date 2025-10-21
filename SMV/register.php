@@ -48,6 +48,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <i class="fas fa-graduation-cap"></i>
                 </div>
                 <h2>Šolski sistem na daljavo</h2>
+                <div class="tab">
+                    <button class="tab" data-tab="register">Registracija</button>
+                </div>
 
                 <?php if (!empty($error)) echo "<p style='color:red;'>$error</p>"; ?>
 
@@ -75,6 +78,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </div>
 </body>
 </html>
+
 
 
 
