@@ -3,21 +3,23 @@ session_start();
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
+// Ensure database connection is always available
+require_once __DIR__ . '/database.php';
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    include 'database.php'; 
 
     $name = $_POST['name'];
     $email = $_POST['email'];
     $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
-    // Check if email already exists
+    // Pogleda če je tak emial že v tabeli
     $sql_check = "SELECT * FROM users WHERE email = $1";
     $result_check = pg_query_params($conn, $sql_check, array($email));
 
     if (pg_num_rows($result_check) > 0) {
         $error = "Ta e-poštni naslov je že uporabljen.";
     } else {
-        // Insert new user
+        //doda novega uporabnika
         $sql_insert = "INSERT INTO users (name, email, password) VALUES ($1, $2, $3)";
         $result_insert = pg_query_params($conn, $sql_insert, array($name, $email, $password));
 
