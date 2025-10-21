@@ -121,7 +121,7 @@
             </div>
         </section>
         <div class="button-container">
-            <button class="btn-primary" onclick="saveSelection()">Shrani izbiro</button>
+            <button class="btn-primary" href="Homepage.php" onclick="saveSelection()">Shrani izbiro</button>
         </div>
     </main>
     <script>
