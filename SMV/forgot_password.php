@@ -1,7 +1,6 @@
 <?php
 session_start();
 session_destroy();
-exit;
 session_start();
 require_once 'database.php';
 
@@ -134,4 +133,5 @@ if (isset($_SESSION['reset_email']) && $step === 1) {
     </div>
 </div>
 </body>
+
 </html>
