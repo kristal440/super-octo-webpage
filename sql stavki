@@ -58,3 +58,21 @@ CREATE TABLE submissions (
     FOREIGN KEY (assignment_id) REFERENCES assignments(id) ON DELETE CASCADE,
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
+
+
+
+
+-- Insert sample subjects with teachers (assuming you have some teacher users)
+INSERT INTO subjects (name, description, teacher_id) VALUES
+('Angleščina', 'Učenje angleškega jezika in literature', NULL),
+('Slovenščina', 'Učenje slovenskega jezika in literature', NULL),
+('Matematika', 'Matematični predmet z osnovnimi in naprednimi koncepti', NULL),
+('Sociologija', 'Preučevanje družbe in družbenih pojavov', NULL),
+('SMV', 'Svetovna in medkulturna vzgoja', NULL),
+('NUP', 'Načrtovanje in upravljanje proizvodnje', NULL),
+('NRP', 'Načrtovanje in razvoj proizvodov', NULL),
+('RPR', 'Računalniška podpora razvoju', NULL),
+('ŠVZ', 'Športna in zdravstvena vzgoja', NULL);
+
+-- If you have teacher users, you can update the teacher_id like this:
+-- UPDATE subjects SET teacher_id = (SELECT id FROM users WHERE status = 'Teacher' LIMIT 1) WHERE name = 'Angleščina';
