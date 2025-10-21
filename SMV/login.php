@@ -74,7 +74,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <input type="password" id="password" name="password" required />
                 </div>
                 <button type="submit" class="btn-primary">Prijava</button>
-                <a href="register.php">Registreraj se</a>
+                <a href="register.php">Registreraj se</a><br>
                 <a href="forgot_password.php">Pozabljeno geslo?</a>
             </form>
             
