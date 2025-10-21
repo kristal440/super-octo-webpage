@@ -1,5 +1,7 @@
 <?php
+session_start();
 session_destroy();
+exit;
 session_start();
 require_once 'database.php';
 
