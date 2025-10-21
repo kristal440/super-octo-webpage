@@ -119,7 +119,7 @@ if (isset($_SESSION['reset_email']) && $step === 1) {
             <?php endif; ?>
             
             <div style="margin-top: 1rem; text-align: center;">
-                <a href="login.php" style="color: #3498db; text-decoration: none; font-size: 0.9rem;">← Nazaj na prijavo</a>
+                <a href="login.php?reset_session=1" style="color: #3498db; text-decoration: none; font-size: 0.9rem;">← Nazaj na prijavo</a>
             </div>
         </div>
     </div>
