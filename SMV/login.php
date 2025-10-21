@@ -60,7 +60,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <h2>Šolski sistem na daljavo</h2>
             <div class="tabs">
                 <button class="tab active" data-tab="login">Prijava</button>
-                <button class="tab" data-tab="register">Registracija</button>
             </div>
             <?php if (!empty($error)): ?>
                 <div class="error-message" style="color: #b00020; margin-bottom: 12px;"><?php echo htmlspecialchars($error); ?></div>
