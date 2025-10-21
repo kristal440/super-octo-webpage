@@ -8,7 +8,6 @@ session_start();
 
 // Include DB connection (uses pg_connect)
 require_once 'database.php';
-session_start();
 
 $error = '';
 
