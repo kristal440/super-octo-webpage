@@ -1,13 +1,14 @@
 <?php
 $host = "localhost";
-$port = "5432";
-$dbname = "mydb";
+$db   = "mydb";
 $user = "myuser";
-$password = "mypassword";
+$pass = "mypassword";
+$port = "5432";
 
-$conn = pg_connect("host=$host port=$port dbname=$dbname user=$user password=$password");
-
-if (!$conn) {
-    die("Povezava z bazo ni uspela: " . pg_last_error());
+try {
+    $dsn = "pgsql:host=$host;port=$port;dbname=$db;";
+    $pdo = new PDO($dsn, $user, $pass, [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
+} catch (PDOException $e) {
+    die("Database connection failed: " . htmlspecialchars($e->getMessage()));
 }
 ?>
