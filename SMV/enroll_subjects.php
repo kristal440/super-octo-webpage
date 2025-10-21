@@ -208,7 +208,7 @@ $enrolled_subjects = $stmt_enrolled->fetchAll(PDO::FETCH_COLUMN);
                 <?php endforeach; ?>
             </section>
             <div class="button-container">
-                <button type="submit" class="btn-primary">Shrani izbiro</button>
+                <a href="Homepage.php"><button type="submit" class="btn-primary">Shrani izbiro</button></a>
             </div>
         </form>
     </main>
@@ -258,4 +258,5 @@ function getSubjectIcon($subjectName) {
     
     return $icons[$subjectName] ?? '📚';
 }
+
 ?>
