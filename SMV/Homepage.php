@@ -1,4 +1,7 @@
 <?php
+   ini_set('display_errors', 1);
+   error_reporting(E_ALL);
+   session_start();
 session_start();
 
 // Check if user is logged in
@@ -125,4 +128,5 @@ $total_submissions = $stmt->fetch(PDO::FETCH_ASSOC)['count'];
 </main>
 
 </body>
+
 </html>
