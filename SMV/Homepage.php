@@ -2,8 +2,6 @@
    ini_set('display_errors', 1);
    error_reporting(E_ALL);
    session_start();
-session_start();
-
 // Check if user is logged in
 if (!isset($_SESSION['user_id'])) {
     header('Location: login.php');
@@ -130,3 +128,4 @@ $total_submissions = $stmt->fetch(PDO::FETCH_ASSOC)['count'];
 </body>
 
 </html>
+
