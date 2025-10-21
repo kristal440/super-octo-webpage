@@ -11,14 +11,13 @@ if (!isset($_SESSION['user_id'])) {
 require_once 'database.php';
 
 $user_id = $_SESSION['user_id'];
-$user_name = $_SESSION['user_email']; // You can fetch the actual name from DB if needed
 $user_status = $_SESSION['user_status'] ?? 'Student';
 
 // Fetch user's full name
 $stmt_user = $pdo->prepare('SELECT name FROM users WHERE id = :user_id');
 $stmt_user->execute(['user_id' => $user_id]);
 $user_data = $stmt_user->fetch(PDO::FETCH_ASSOC);
-$user_name = $user_data['name'] ?? $user_name;
+$user_name = $user_data['name'] ?? $_SESSION['user_email'];
 
 // Fetch subjects enrolled by the user
 $stmt = $pdo->prepare('
@@ -62,14 +61,17 @@ $user_status_display = $status_slovenian[$user_status] ?? 'Učenec';
 <html lang="sl">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Učenčev portal</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <header>
-    <div class="logo"><a href="Homepage.php" class="reload">🎓 Šolski sistem na daljavo</a></div>
+    <div class="logo">
+        <a href="Homepage.php" class="reload">&#127891; Šolski sistem na daljavo</a>
+    </div>
     <div class="user-info">
-        <span>👤 <?php echo htmlspecialchars($user_name); ?> (<?php echo htmlspecialchars($user_status_display); ?>)</span>
+        <span>&#128100; <?php echo htmlspecialchars($user_name); ?> (<?php echo htmlspecialchars($user_status_display); ?>)</span>
         <button onclick="window.location.href='logout.php'">Odjava</button>
     </div>
 </header>
