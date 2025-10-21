@@ -6,6 +6,12 @@ $error = '';
 $success = '';
 $step = 1; // Step 1: Enter email, Step 2: Enter new password
 
+// Če uporabnik klikne "Nazaj na prijavo", pobrišemo session
+if (isset($_GET['reset_session'])) {
+    unset($_SESSION['reset_email']);
+    $step = 1;
+}
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['email']) && !isset($_POST['new_password'])) {
         // Step 1: Check if email exists
