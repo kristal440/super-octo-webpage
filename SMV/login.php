@@ -7,7 +7,8 @@
 session_start();
 
 // Include DB connection (uses pg_connect)
-require_once __DIR__ . '/database.php';
+require_once 'config.php';
+session_start();
 
 $error = '';
 
