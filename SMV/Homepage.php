@@ -1,7 +1,6 @@
 <?php
-   ini_set('display_errors', 1);
-   error_reporting(E_ALL);
-   session_start();
+session_start();
+
 // Check if user is logged in
 if (!isset($_SESSION['user_id'])) {
     header('Location: login.php');
@@ -121,11 +120,11 @@ $total_submissions = $stmt->fetch(PDO::FETCH_ASSOC)['count'];
                     </li>
                 <?php endforeach; ?>
             </ul>
+            <p>Za dostop do gradiv in oddajo nalog morate izbrati predmete.</p>
+                <button class="btn-primary" onclick="window.location.href='enroll_subjects.php'">Izbirate predmete</button>
         <?php endif; ?>
     </section>
 </main>
 
 </body>
-
 </html>
-
