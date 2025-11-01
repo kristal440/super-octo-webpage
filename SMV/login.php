@@ -3,9 +3,7 @@
 session_start();
 // Include DB connection (uses PDO)
 require_once 'database.php';
-
 $error = '';
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Basic input validation
     $email = isset($_POST['email']) ? trim($_POST['email']) : '';
@@ -15,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $error = 'Prosim vnesite e-pošto in geslo.';
     } else {
         // Query user by email using PDO prepared statement
-        $stmt = $pdo->prepare('SELECT id, email, password, status FROM users WHERE email = :email');
+        $stmt = $pdo->prepare('SELECT id, email, password, status, name FROM users WHERE email = :email');
         $stmt->execute(['email' => $email]);
         
         if ($stmt->rowCount() === 1) {
@@ -28,10 +26,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 // Store user info in session
                 $_SESSION['user_id'] = $user['id'];
                 $_SESSION['user_email'] = $user['email'];
-                $_SESSION['user_status'] = $user['status']; // Store status too (Student/Teacher/Admin)
+                $_SESSION['user_status'] = $user['status'];
+                $_SESSION['user_name'] = $user['name'];
                 
-                // Redirect to homepage
-                header('Location: Homepage.php');
+                // Redirect based on user status
+                switch ($user['status']) {
+                    case 'Admin':
+                        header('Location: admin_dashboard.php');
+                        break;
+                    case 'Teacher':
+                        header('Location: teacher_dashboard.php');
+                        break;
+                    case 'Student':
+                        header('Location: Homepage.php');
+                        break;
+                    default:
+                        header('Location: Homepage.php');
+                        break;
+                }
                 exit;
             } else {
                 $error = 'Neveljavno geslo.';
