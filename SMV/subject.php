@@ -57,7 +57,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['submission_file'])) 
     if ($assignment_id === 0) {
         $error = "Neveljavna naloga!";
     } elseif ($file['error'] !== UPLOAD_ERR_OK) {
-        $error = "Napaka pri nalaganju datoteke!";
+        $error_messages = [
+            UPLOAD_ERR_INI_SIZE => 'Datoteka presega največjo dovoljeno velikost.',
+            UPLOAD_ERR_FORM_SIZE => 'Datoteka presega največjo dovoljeno velikost.',
+            UPLOAD_ERR_PARTIAL => 'Datoteka je bila le delno naložena.',
+            UPLOAD_ERR_NO_FILE => 'Nobena datoteka ni bila naložena.',
+            UPLOAD_ERR_NO_TMP_DIR => 'Manjka začasna mapa.',
+            UPLOAD_ERR_CANT_WRITE => 'Pisanje datoteke na disk ni uspelo.',
+            UPLOAD_ERR_EXTENSION => 'PHP razširitev je ustavila nalaganje datoteke.'
+        ];
+        $error = "Napaka pri nalaganju: " . ($error_messages[$file['error']] ?? "Neznana napaka");
     } else {
         // Check if user already submitted this assignment
         $stmt = $pdo->prepare('
@@ -70,7 +79,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['submission_file'])) 
         // Create uploads directory if it doesn't exist
         $upload_dir = 'uploads/submissions/';
         if (!file_exists($upload_dir)) {
-            mkdir($upload_dir, 0777, true);
+            if (!mkdir($upload_dir, 0777, true)) {
+                $error = "Napaka: Ne morem ustvariti mape za nalaganje. Kontaktirajte administratorja.";
+            } else {
+                @chmod($upload_dir, 0777);
+            }
+        }
+        
+        // Check if directory is writable
+        if (empty($error) && !is_writable($upload_dir)) {
+            $error = "Napaka: Mapa za nalaganje ni zapisljiva. Kontaktirajte administratorja.";
         }
         
         // Generate unique filename
@@ -78,7 +96,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['submission_file'])) 
         $unique_filename = 'submission_' . $assignment_id . '_' . $user_id . '_' . time() . '.' . $file_extension;
         $file_path = $upload_dir . $unique_filename;
         
-        if (move_uploaded_file($file['tmp_name'], $file_path)) {
+        if (!empty($error)) {
+            // Don't proceed if there was an error
+        } elseif (move_uploaded_file($file['tmp_name'], $file_path)) {
             try {
                 if ($existing_submission) {
                     // Update existing submission
@@ -110,7 +130,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['submission_file'])) 
                 $error = "Napaka pri shranjevanju: " . $e->getMessage();
             }
         } else {
-            $error = "Napaka pri premikanju datoteke!";
+            $error = "Napaka pri premikanju datoteke! Preverite dovoljenja mape.";
         }
     }
 }
