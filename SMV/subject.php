@@ -175,6 +175,9 @@ $assignments = $stmt->fetchAll(PDO::FETCH_ASSOC);
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
             margin-bottom: 2rem;
         }
+        a{
+            text-decoration: none;
+        }
         
         .subject-header h1 {
             margin-bottom: 0.5rem;
