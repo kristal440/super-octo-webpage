@@ -26,7 +26,6 @@ if (isset($_GET['delete'])) {
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name = trim($_POST['name']);
     $description = trim($_POST['description']);
-    $access_key = trim($_POST['access_key']);
     
     if (empty($name)) {
         $error = "Ime predmeta je obvezno!";
@@ -34,21 +33,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         try {
             if (isset($_POST['id']) && !empty($_POST['id'])) {
                 // UPDATE
-                $stmt = $pdo->prepare("UPDATE subjects SET name = :name, description = :description, access_key = :access_key WHERE id = :id");
+                $stmt = $pdo->prepare("UPDATE subjects SET name = :name, description = :description WHERE id = :id");
                 $stmt->execute([
                     'name' => $name,
                     'description' => $description,
-                    'access_key' => $access_key ?: null,
                     'id' => $_POST['id']
                 ]);
                 $success = "Predmet uspešno posodobljen!";
             } else {
                 // INSERT
-                $stmt = $pdo->prepare("INSERT INTO subjects (name, description, access_key) VALUES (:name, :description, :access_key)");
+                $stmt = $pdo->prepare("INSERT INTO subjects (name, description) VALUES (:name, :description)");
                 $stmt->execute([
                     'name' => $name,
                     'description' => $description,
-                    'access_key' => $access_key ?: null
                 ]);
                 $success = "Predmet uspešno dodan!";
             }
